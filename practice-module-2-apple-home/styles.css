@@ -1,0 +1,140 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul, h2, h3, h4, h5 {
+  padding: 0;
+  margin: 0;
+}
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  backdrop-filter: blur(20px);
+}
+
+ul {
+  max-width: 100%;
+  min-width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container {
+  width: 1000px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 36px;
+  height: 44px;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+main {
+  padding-top: 44px;
+}
+
+.hero {
+  width: 100%;
+  height: 692px;
+  background-image: url(images/hero.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+h2 {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+.section-text {
+  text-align: center;
+  padding-top: 55px;
+}
+
+.columns {
+  padding: 8px;
+}
+
+.row {
+  display: flex;
+}
+
+.card {
+  width: 50%;
+  height: 624px;
+  margin: 8px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.card.first {
+  background-image: url(images/mod-3.jpg);
+  color: white;
+}
+
+.card.first a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2997ff;
+}
+
+.card.first a:hover {
+  text-decoration: underline;
+}
+
+.card a:not(:first-child) {
+  margin-left: 28px;
+}
+
+h5 {
+  font-size: 21px;
+  margin-top: 12px;
+}
+
+.card.second {
+  background-image: url(images/mod-4.jpg);
+}
+
+.watch {
+  background-image: url(images/watch.png);
+  width: 430px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+  margin-top: 57px;
+}
