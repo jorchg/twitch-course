@@ -7,7 +7,7 @@ html {
   box-sizing: inherit;
 }
 
-ul, h2, h3, h4, h5 {
+ul, h2, h3, h4, h5, p {
   padding: 0;
   margin: 0;
 }
@@ -29,8 +29,9 @@ nav {
   width: 100%;
   height: 44px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: #f5f5f7;
   backdrop-filter: blur(20px);
+  font-size: 14px;
 }
 
 ul {
@@ -38,6 +39,23 @@ ul {
   min-width: 90%;
   justify-content: space-between;
   align-items: center;
+}
+
+nav ul li {
+  opacity: 0.8;
+}
+
+.search-icon {
+  background-image: url('images/search-icon.svg');
+  width: 38px;
+  height: 44px;
+  background-position: 10px 0;
+  background-size: 18px 88px;
+  background-repeat: no-repeat;
+}
+
+.bag-icon {
+  object-position: 0 3px;
 }
 
 .navbar-container {
@@ -63,12 +81,56 @@ main {
   padding-top: 44px;
 }
 
-.hero {
+.hero, .iphone, .ipad {
   width: 100%;
-  height: 692px;
+  height: 681px;
   background-image: url(images/hero.jpg);
   background-repeat: no-repeat;
   background-position: bottom;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.iphone {
+  color: white;
+}
+
+.iphone p {
+  color: #86868b;
+  margin-top: 4px;
+}
+
+.ipad {
+  background-color: #fbfbfd;
+}
+
+.iphone, .ipad {
+  padding-top: 55px;
+}
+
+.hero > .section-text {
+  padding-top: 55px;
+}
+
+.hero > .section-text > h3 {
+  font-weight: 400;
+}
+
+.hero > .section-text > p {
+  color: #86868b;
+  margin-top: 4px;
+}
+
+.iphone {
+  background-image: url('images/mod-1.jpg');
+}
+
+.ipad {
+  background-image: url('images/mod-2.jpg');
+}
+
+.ipad h3 {
+  font-weight: 400;
 }
 
 h2 {
@@ -80,13 +142,19 @@ h3 {
   font-size: 28px;
 }
 
+h4 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
 .section-text {
   text-align: center;
-  padding-top: 55px;
 }
 
 .columns {
   padding: 8px;
+  padding-top: 0;
 }
 
 .row {
@@ -95,10 +163,11 @@ h3 {
 
 .card {
   width: 50%;
-  height: 624px;
+  height: 580px;
   margin: 8px;
   background-repeat: no-repeat;
   background-position: bottom;
+  background-color: #fbfbfd;
 }
 
 .card.first {
@@ -106,22 +175,26 @@ h3 {
   color: white;
 }
 
-.card.first a {
+.card a, .hero a, .iphone a, .ipad a {
   display: inline-block;
   margin-top: 12px;
   color: #2997ff;
 }
 
-.card.first a:hover {
+.card a:hover, .hero a:hover, .iphone a:hover, .ipad a:hover {
   text-decoration: underline;
 }
 
-.card a:not(:first-child) {
+.card a, .hero a, .iphone a, .ipad a {
   margin-left: 28px;
 }
 
+.card a:first-of-type, .hero a:first-of-type, .iphone a:first-of-type, .ipad a:first-of-type {
+  margin-left: 0;
+}
+
 h5 {
-  font-size: 21px;
+  font-size: 19px;
   margin-top: 12px;
 }
 
@@ -129,12 +202,97 @@ h5 {
   background-image: url(images/mod-4.jpg);
 }
 
-.watch {
-  background-image: url(images/watch.png);
+.card.second > .section-text {
+  padding-top: 0;
+}
+
+.watch, .one {
   width: 430px;
   height: 57px;
   background-repeat: no-repeat;
   background-position: center;
   margin: 0 auto;
   margin-top: 57px;
+}
+
+.watch {
+  background-image: url(images/watch.png);
+}
+
+.one {
+  background-image: url(images/one_logo.png);
+  height: 33px;
+}
+
+.second h5 {
+  max-width: 320px;
+  margin: 0 auto;
+  margin-top: 11px;
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.second a {
+  display: inline-block;
+  margin-top: 11px;
+}
+
+.card.third {
+  background-image: url('images/mod-5.jpg');
+}
+
+.card.third p {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  text-align: center;
+  margin-top: 29px;
+  color: #bf4800;
+}
+
+.card.third h4 {
+  max-width: 372px;
+  margin: 0 auto;
+}
+
+.card.third h5 {
+  max-width: 540px;
+  margin-top: 4px;
+}
+
+.card.third a {
+  margin-top: 0;
+}
+
+.card.fourth {
+  background-image: url('images/mod-6.jpg');
+}
+
+.card.fourth h4 {
+  margin-top: 53px;
+}
+
+footer {
+  height: 1090px;
+  background-color: #fbfbfd;
+}
+
+footer .container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+  border-bottom: 1px solid #d2d2d7;
+  color: #86868b;
+  padding: 17px 0 11px;
+}
+
+footer .container ul {
+  list-style: none;
+}
+
+footer .container ul li {
+  font-size: 12px;
+  line-height: 1.33337;
+  font-weight: 400;
+  padding: 4px 0 4px 0;
 }
