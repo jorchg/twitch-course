@@ -1,0 +1,115 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul, h2, h3, h4, h5, p {
+  padding: 0;
+  margin: 0;
+}
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #f5f5f7;
+  backdrop-filter: blur(20px);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  transition: background-color 0.1s ease-in-out 0.25s;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + nav {
+  background-color: black;
+  transition: background-color 0.1s ease-in-out;
+}
+
+input[type="checkbox"]:checked + nav .mobile-menu {
+  height: calc(100vh - 48px);
+}
+
+nav > .menu {
+  display: flex;
+  align-items: center;
+}
+
+nav > .menu > img {
+  width: 38px;
+  height: 48px;
+}
+
+nav > .menu > svg {
+  fill: white;
+}
+
+nav > .mobile-menu {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  top: 48px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  transition: height 0.3s ease-in-out;
+}
+
+.mobile-menu > hr {
+  border-color: #1d1d1f;
+}
+
+.mobile-menu > .search-wrapper {
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+}
+
+.mobile-menu > .search-wrapper > .search-input {
+  background-color: #1d1d1f;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input > span {
+  font-size: 17px;
+  color: #6E6E73;
+  padding: 0 24px;
+}
+
+.mobile-menu > ul {
+  padding: 0 40px 8px 40px;
+  color: #f5f5f7;
+}
+
+nav > .mobile-menu > ul > li {
+  list-style: none;
+  font-size: 17px;
+  border-bottom: 2px solid #1d1d1f;
+  padding: 10px 0;
+}
