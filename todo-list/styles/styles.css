@@ -32,15 +32,14 @@ h1 {
   list-style: disc;
 }
 
-.list__container ul .list__item-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
+.list__container ul li {
+  position: relative;
+  margin-top: 10px;
 }
 
-.list__container ul li {
-  margin-top: 10px;
+.list__container ul li span {
+  position: absolute;
+  right: 10px;
 }
 
 .list__container ul li.list__item--completed {
