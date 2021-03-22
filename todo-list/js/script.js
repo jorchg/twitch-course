@@ -1,4 +1,4 @@
-function insertListItem(task) {
+function insertListItem(task, completed = false, isSavedItem = false) {
   const newItem = document.createElement('li');
   const newItemDeleteButton = document.createElement('span');
   const newItemCheckbox = document.createElement('input');
@@ -8,6 +8,7 @@ function insertListItem(task) {
   newItem.innerHTML = `${task}`;
 
   newItemCheckbox.type = 'checkbox';
+  newItemCheckbox.checked = completed;
 
   const list = document.querySelector('ul');
   list.appendChild(newItem);
@@ -16,6 +17,13 @@ function insertListItem(task) {
   newItem.appendChild(newItemDeleteButton);
   deleteItemListener(newItemDeleteButton);
   markItemAsCompletedListener(newItemCheckbox);
+
+  if (!isSavedItem) {
+    saveElement({
+      'text': task,
+      'completed': false,
+    });
+  }
 }
 
 function markItemAsCompletedListener(element) {
@@ -36,7 +44,30 @@ function toggleElementAsCompleted(element) {
  element.classList.toggle('list__item--completed');
 }
 
+function saveElement(newElement) {
+  const elements = getElements();
+  elements.items.push(newElement);
+  saveElements(elements);
+}
+
+function saveElements(elements) {
+  localStorage.setItem('items', JSON.stringify(elements));
+}
+
+function getElements() {
+  return JSON.parse(localStorage.getItem('items'));
+}
+
 window.addEventListener('DOMContentLoaded', function() {
+  const savedItems = getElements();
+  if (!savedItems) saveElements({
+    "items": []
+  });
+
+  savedItems.items.forEach(function(item) {
+    insertListItem(item.text, item.completed, true);
+  });
+
   const form = document.querySelector('#todo__form');
   const textInput = document.querySelector('input[type="text"]');
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');

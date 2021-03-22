@@ -75,3 +75,10 @@ form > input[type="submit"] {
 .list__container ul li.list__item--completed {
   text-decoration: line-through;
 }
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
