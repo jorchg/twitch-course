@@ -12,18 +12,23 @@
   </head>
   <body>
     <div class="container">
-      <h1>Twitch TODO list</h1>
-      <div class="list__container">
-        <ul>
-          <li class="list__item list__item--completed">Comprar plátanos<span>X</span></li>
-          <li class="list__item">Comprar cervezas<span>X</span></li>
-        </ul>
-      </div>
       <div class="form__container">
         <form id="todo__form">
-          <input type="text">
-          <input type="submit">
+          <input type="text" placeholder="Nueva tarea...">
+          <input type="submit" value="+">
         </form>
+      </div>
+      <div class="list__container">
+        <ul>
+          <li class="list__item">
+            <input type="checkbox">Comprar plátanos
+            <span>❌</span>
+          </li>
+          <li class="list__item">
+            <input type="checkbox">Comprar cervezas
+            <span>❌</span>
+          </li>
+        </ul>
       </div>
     </div>
   </body>
