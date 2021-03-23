@@ -3,6 +3,9 @@ function insertListItem(task, completed = false, isSavedItem = false) {
   const newItemDeleteButton = document.createElement('span');
   const newItemCheckbox = document.createElement('input');
 
+  newItem.dataset.completed = completed;
+  newItem.dataset.text = task;
+
   newItemDeleteButton.textContent = '❌';  
   newItem.classList.add('list__item');
   newItem.innerHTML = `${task}`;
@@ -16,7 +19,6 @@ function insertListItem(task, completed = false, isSavedItem = false) {
   newItem.prepend(newItemCheckbox);
   newItem.appendChild(newItemDeleteButton);
   deleteItemListener(newItemDeleteButton);
-  markItemAsCompletedListener(newItemCheckbox);
 
   if (!isSavedItem) {
     saveElement({
@@ -26,22 +28,19 @@ function insertListItem(task, completed = false, isSavedItem = false) {
   }
 }
 
-function markItemAsCompletedListener(element) {
-  element.addEventListener('click', function() {
-    toggleElementAsCompleted(element.parentElement);
-  });
-}
-
 function deleteItemListener(element) {
   element.addEventListener('click', function(event) {
     const item = event.target;
     item.parentElement.remove();
+    deleteElement(element);
   });
 }
 
 function toggleElementAsCompleted(element) {
  const checkbox = element.querySelector('input[type="checkbox"]');
+ const isCompleted = element.dataset.completed;
  element.classList.toggle('list__item--completed');
+ element.dataset.completed = (isCompleted === 'true') ? 'false' : 'true';
 }
 
 function saveElement(newElement) {
@@ -52,6 +51,18 @@ function saveElement(newElement) {
 
 function saveElements(elements) {
   localStorage.setItem('items', JSON.stringify(elements));
+}
+
+function deleteElement(element) {
+  const elements = getElements();
+  const item = element.closest('li');
+  const text = item.dataset.text;
+  const completed = item.dataset.completed;
+
+  const filteredItems = elements.items.filter(savedItem => savedItem.text !== text && savedItem.completed !== completed);
+  saveElements({
+    items: filteredItems
+  });
 }
 
 function getElements() {
