@@ -5,6 +5,7 @@ function insertListItem(task, completed = false, isSavedItem = false) {
 
   newItem.dataset.completed = completed;
   newItem.dataset.text = task;
+  if (completed) newItem.classList.add('list__item--completed');
 
   newItemDeleteButton.textContent = '❌';  
   newItem.classList.add('list__item');
@@ -37,10 +38,17 @@ function deleteItemListener(element) {
 }
 
 function toggleElementAsCompleted(element) {
- const checkbox = element.querySelector('input[type="checkbox"]');
- const isCompleted = element.dataset.completed;
- element.classList.toggle('list__item--completed');
- element.dataset.completed = (isCompleted === 'true') ? 'false' : 'true';
+  const elements = getElements();
+  const isCompleted = element.dataset.completed;
+  const itemText = element.dataset.text;
+  element.classList.toggle('list__item--completed');
+  element.dataset.completed = (isCompleted === 'true') ? 'false' : 'true';
+ 
+  const savedElement = elements.items.find(arrayElement => arrayElement.text === itemText);
+  savedElement.completed = isCompleted === 'true' ? false : true;
+  saveElements({
+    items: elements.items
+  });
 }
 
 function saveElement(newElement) {
