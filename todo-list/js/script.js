@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', function() {
     "items": []
   });
 
-  savedItems.items.forEach(function(item) {
+  savedItems.items.sort(item => item.completed ? 1 : -1).forEach(function(item) {
     insertListItem(item.text, item.completed, true);
   });
 
